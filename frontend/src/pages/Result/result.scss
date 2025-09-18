@@ -1,0 +1,50 @@
+.result__title {
+  margin: 8px 0 16px;
+}
+
+.result__tag-true {
+  color: #16a34a;
+  background-color: #fef08a;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  margin-left: 12px;
+  font-size: 16px;
+  padding: 2px 8px;
+}
+.result__tag-false {
+  color: #dc2626;
+  background-color: #fef08a;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  margin-left: 12px;
+  font-size: 16px;
+  padding: 2px 8px;
+}
+.result__item-selected {
+  color: #dc2626;
+}
+.result__item-result {
+  color: #16a34a;
+}
+.result__question {
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.result__item {
+  background-color: var(--color-surface);
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.result__list {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+.result__answer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+}

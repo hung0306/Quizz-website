@@ -1,0 +1,95 @@
+.layout-default {
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-surface);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  &__main {
+    padding: 32px 0;
+    background-color: var(--color-bg);
+  }
+
+  &__footer {
+    background-color: var(--color-surface);
+    padding: 16px 20px;
+    text-align: center;
+    color: var(--color-text-muted);
+    border-top: 1px solid rgba(2, 6, 23, 0.06);
+  }
+  &__login,
+  &__logout,
+  &__register {
+    text-decoration: none;
+    margin-left: 10px;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    padding: 8px 10px;
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+  }
+  &__img {
+    width: 100px;
+    height: 60px;
+  }
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+  &__quizz {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+  &__back {
+    font-size: 24px;
+    margin-right: 12px;
+    cursor: pointer;
+    color: var(--color-text-muted);
+  }
+}
+
+.menu {
+  &__home,
+  &__topic,
+  &__answer {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 8px;
+
+    li {
+      list-style-type: none;
+      padding: 2px;
+      border-radius: var(--radius-sm);
+      &:hover {
+        background-color: rgba(2, 6, 23, 0.04);
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--color-text);
+
+    &--active {
+      color: var(--color-primary-600);
+    }
+  }
+}

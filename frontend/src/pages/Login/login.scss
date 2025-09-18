@@ -1,0 +1,95 @@
+.auth {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+.form__login {
+  width: 480px;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  text-align: left;
+  justify-content: center;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 12px 28px rgba(16, 24, 40, 0.12);
+  }
+
+  &-account,
+  &-pass,
+  &-name {
+    font-size: 16px;
+    margin-bottom: 12px;
+    margin-top: 6px;
+    padding: 10px 12px;
+    border: 1px solid rgba(2, 6, 23, 0.1);
+    border-radius: var(--radius-sm);
+    width: 100%;
+    outline: none;
+    background: #fff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    &::placeholder {
+      color: #94a3b8;
+    }
+    &:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 4px rgba(24, 220, 254, 0.2);
+    }
+  }
+  &-submit {
+    width: 100%;
+    margin-top: 12px;
+  }
+  &-icon {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.form__h2 {
+  margin: 0;
+  margin-bottom: 6px;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+
+.form__subtitle {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: var(--color-text-muted);
+}
+
+.form__field {
+  margin-bottom: 12px;
+}
+
+.form__label {
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.form__avatar {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 12px;
+}
+
+.form__helper {
+  text-align: center;
+  color: var(--color-text-muted);
+  margin-top: 10px;
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
