@@ -1,4 +1,9 @@
-const loginReducer = (state = false, action) => {
+interface LoginAction {
+  type: string;
+  status: boolean;
+}
+
+const loginReducer = (state: boolean = false, action: LoginAction): boolean => {
   // console.log(state,action);
   switch (action.type) {
     case "CHECK_LOGIN":

@@ -9,16 +9,23 @@ import "./login.scss";
 import { Spin, message } from "antd";
 import { useState } from "react";
 
-function Login() {
-  const islogin = useSelector((state) => state.loginReducer);
+interface RootState {
+  loginReducer: boolean;
+}
+
+function Login(): JSX.Element {
+  const islogin = useSelector((state: RootState) => state.loginReducer);
   const navigate = useNavigate();
-  const [xoay, setXoay] = useState(false);
+  const [xoay, setXoay] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault();
     // console.log(e.target[0].value, e.target[1].value);
-    const email = e.target[0].value.trim();
-    const password = e.target[1].value;
+    const target = e.target as HTMLFormElement;
+    const email = (target[0] as HTMLInputElement).value.trim();
+    const password = (target[1] as HTMLInputElement).value;
 
     // Basic validations
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,7 +66,9 @@ function Login() {
           <form className="form__login" onSubmit={handleSubmit}>
             <div>
               <h2 className="form__h2">Đăng nhập</h2>
-              <p className="form__subtitle">Chào mừng trở lại! Hãy đăng nhập để tiếp tục.</p>
+              <p className="form__subtitle">
+                Chào mừng trở lại! Hãy đăng nhập để tiếp tục.
+              </p>
               <div className="form__avatar">
                 <img
                   className="form__login-icon"

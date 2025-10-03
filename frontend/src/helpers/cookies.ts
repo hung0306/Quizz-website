@@ -1,10 +1,10 @@
-export function setCookie(cname, cvalue, exdays) {
+export function setCookie(cname: string, cvalue: string, exdays: number): void {
   const d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   let expires = "expires=" + d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires;
 }
-export function getCookie(cname) {
+export function getCookie(cname: string): string {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   let ca = decodedCookie.split(";");
@@ -20,11 +20,11 @@ export function getCookie(cname) {
   return "";
 }
 
-export function deletecookie(cname) {
+export function deletecookie(cname: string): void {
   document.cookie = `${cname}=; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
 }
 
-export function deleteAllCookies() {
+export function deleteAllCookies(): void {
   const cookies = document.cookie.split(";");
 
   for (let i = 0; i < cookies.length; i++) {

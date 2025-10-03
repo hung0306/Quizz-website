@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { getListTopic } from "../../services/topicService";
 import "./topic.scss";
 
-function Topic() {
-  const [topics, setTopics] = useState([]);
+function Topic(): JSX.Element {
+  const [topics, setTopics] = useState<any[]>([]);
   useEffect(() => {
-    const fetchAPI = async () => {
+    const fetchAPI = async (): Promise<void> => {
       const response = await getListTopic();
       setTopics(response);
     };
@@ -19,7 +19,7 @@ function Topic() {
         <h2 className="layout__topic-h2">Danh sách chủ đề</h2>
 
         <div className="layout__topic-list">
-          {topics.map((item) => (
+          {topics.map((item: any) => (
             <div className="layout__topic-item" key={item.id}>
               {/* <td >{item.id}</td> */}
               <Link className="layout__topic-button" to={"/quizz/" + item.id}>

@@ -36,8 +36,8 @@ function Home() {
               <div className="Homewrap__card-icon">🎯</div>
               <h4 className="Homewrap__card-title">Luyện tập theo chủ đề</h4>
               <p className="Homewrap__card-desc">
-                Hệ thống chủ đề đa dạng giúp bạn tập trung vào phần kiến thức cần
-                cải thiện.
+                Hệ thống chủ đề đa dạng giúp bạn tập trung vào phần kiến thức
+                cần cải thiện.
               </p>
             </div>
             <div className="Homewrap__card">
@@ -66,7 +66,10 @@ function Home() {
           </div>
         </section>
         <div className="Homewrap__img">
-          <img src="https://quizizz.com/wf/assets/6501a46f763d217ede2fac83_LOGOs_hidef-p-1080.webp" />
+          <img
+            src="https://quizizz.com/wf/assets/6501a46f763d217ede2fac83_LOGOs_hidef-p-1080.webp"
+            alt="Quizizz logos"
+          />
         </div>
         <section className="Homewrap__cta">
           <div className="container Homewrap__cta-inner">

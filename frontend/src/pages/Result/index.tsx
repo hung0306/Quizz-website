@@ -4,23 +4,23 @@ import { getListANS } from "../../services/answersService";
 import { getListQuestion } from "../../services/questionService";
 import "./result.scss";
 
-function Result() {
+function Result(): JSX.Element {
   const params = useParams();
-  const [dataResult, setDataResult] = useState([]);
-  const [correctCount, setCorrectCount] = useState(0);
+  const [dataResult, setDataResult] = useState<any[]>([]);
+  const [correctCount, setCorrectCount] = useState<number>(0);
   useEffect(() => {
-    const fetchAPI = async () => {
-      const dataANS = await getListANS(params.id);
+    const fetchAPI = async (): Promise<void> => {
+      const dataANS = await getListANS(params.id || "");
       const dataQuestions = await getListQuestion(dataANS.topicId);
       console.log(dataANS);
       console.log(dataQuestions);
 
-      let resultFinal = [];
+      let resultFinal: any[] = [];
       for (let i = 0; i < dataQuestions.length; i++) {
         resultFinal.push({
           ...dataQuestions[i],
           ...dataANS.answers.find(
-            (item) => item.questionId === dataQuestions[i].id
+            (item: any) => item.questionId === dataQuestions[i].id
           ),
         });
       }
@@ -55,7 +55,7 @@ function Result() {
                   <span className="result__tag result__tag-false">Sai</span>
                 )}
               </p>
-              {item.answers.map((itemAns, indexAns) => {
+              {item.answers.map((itemAns: any, indexAns: number) => {
                 let className = "";
                 let checked = false;
                 if (item.answer === indexAns) {

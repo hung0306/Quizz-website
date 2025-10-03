@@ -3,16 +3,21 @@ import { getCookie } from "../../helpers/cookies";
 import "./LayoutDefault.scss";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { RollbackOutlined } from "@ant-design/icons";
-function LayoutDefault() {
+
+interface RootState {
+  loginReducer: boolean;
+}
+
+function LayoutDefault(): JSX.Element {
   const token = getCookie("token");
   const user = getCookie("fullname");
   // console.log(token);
-  const islogin = useSelector((state) => state.loginReducer);
+  const islogin = useSelector((state: RootState) => state.loginReducer);
   console.log(islogin);
   // cái islogin này mục đích duy nhất là khi login hoặc logout thì set lại giá trị để nó load trang
 
   const navigate = useNavigate();
-  const handleClick = () => {
+  const handleClick = (): void => {
     navigate(-1);
   };
 

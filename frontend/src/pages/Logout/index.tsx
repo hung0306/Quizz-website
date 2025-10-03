@@ -4,8 +4,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { checkLogin } from "../../actions/login";
 
-function Logout() {
-  const islogin = useSelector((state) => state.loginReducer);
+interface RootState {
+  loginReducer: boolean;
+}
+
+function Logout(): JSX.Element {
+  const islogin = useSelector((state: RootState) => state.loginReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   deleteAllCookies();

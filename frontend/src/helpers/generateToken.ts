@@ -1,4 +1,4 @@
-export function generateToken() {
+export function generateToken(): string {
   const chars =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
   const length = 20;

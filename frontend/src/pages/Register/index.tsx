@@ -6,16 +6,19 @@ import { generateToken } from "../../helpers/generateToken";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-function Register() {
+function Register(): JSX.Element {
   const navigate = useNavigate();
-  const [xoay, setXoay] = useState(false);
+  const [xoay, setXoay] = useState<boolean>(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault();
     // console.log(e.target[0].value, e.target[1].value);
-    const fullname = e.target[0].value.trim();
-    const email = e.target[1].value.trim();
-    const password = e.target[2].value;
+    const target = e.target as HTMLFormElement;
+    const fullname = (target[0] as HTMLInputElement).value.trim();
+    const email = (target[1] as HTMLInputElement).value.trim();
+    const password = (target[2] as HTMLInputElement).value;
 
     // Basic validations
     if (!fullname) {
@@ -75,7 +78,9 @@ function Register() {
           <form className="form__login" onSubmit={handleSubmit}>
             <div>
               <h2 className="form__h2">Đăng ký</h2>
-              <p className="form__subtitle">Tạo tài khoản mới để bắt đầu học tập.</p>
+              <p className="form__subtitle">
+                Tạo tài khoản mới để bắt đầu học tập.
+              </p>
 
               <div className="form__field">
                 <label className="form__label">Họ tên</label>

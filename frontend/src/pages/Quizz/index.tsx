@@ -6,37 +6,41 @@ import { getCookie } from "../../helpers/cookies";
 import { createAns } from "../../services/quizzService";
 import "./quizz.scss";
 
-function Quizz() {
+function Quizz(): JSX.Element {
   const param = useParams();
-  const [dataTopic, setDataTopic] = useState([]);
-  const [dataQuestions, setDataQuestion] = useState([]);
+  const [dataTopic, setDataTopic] = useState<any[]>([]);
+  const [dataQuestions, setDataQuestion] = useState<any[]>([]);
   const navigate = useNavigate();
   // console.log(param);
   useEffect(() => {
-    const fetchAPI = async () => {
-      const response = await getTopic(param.id);
+    const fetchAPI = async (): Promise<void> => {
+      const response = await getTopic(param.id || "");
       setDataTopic(response);
     };
     fetchAPI();
   }, []);
 
   useEffect(() => {
-    const fetchAPI = async () => {
-      const response = await getListQuestion(param.id);
+    const fetchAPI = async (): Promise<void> => {
+      const response = await getListQuestion(param.id || "");
       setDataQuestion(response);
       // console.log(response);
     };
     fetchAPI();
   }, []);
   //  console.log(dataQuestions);
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     // console.log(e);
     e.preventDefault();
-    let selected = [];
-    for (let i = 0; i < e.target.elements.length; i++) {
-      if (e.target.elements[i].checked) {
-        const name = e.target.elements[i].name;
-        const value = e.target.elements[i].value;
+    let selected: any[] = [];
+    const target = e.target as HTMLFormElement;
+    for (let i = 0; i < target.elements.length; i++) {
+      const element = target.elements[i] as HTMLInputElement;
+      if (element.checked) {
+        const name = element.name;
+        const value = element.value;
         selected.push({
           questionId: parseInt(name),
           answer: parseInt(value),
@@ -47,7 +51,7 @@ function Quizz() {
     // console.log(selected);
     let options = {
       userId: parseInt(getCookie("id")),
-      topicId: parseInt(param.id),
+      topicId: parseInt(param.id || "0"),
       answers: selected,
     };
     const response = await createAns(options);
@@ -61,7 +65,8 @@ function Quizz() {
       <div>
         <div className="form-quizz">
           <h2 className="form-quizz__title">
-            Bài Quizz chủ đề: {dataTopic && <>{dataTopic.name}</>}
+            Bài Quizz chủ đề:{" "}
+            {dataTopic && dataTopic.length > 0 && <>{dataTopic[0].name}</>}
           </h2>
           <form onSubmit={handleSubmit}>
             {dataQuestions.map((item, index) => (
@@ -69,7 +74,7 @@ function Quizz() {
                 <p className="form-quizz__question">
                   câu {index + 1}: {item.question}
                 </p>
-                {item.answers.map((itemAns, indexAns) => (
+                {item.answers.map((itemAns: any, indexAns: number) => (
                   <div className="form-quizz_answer" key={indexAns}>
                     <input
                       type="radio"
